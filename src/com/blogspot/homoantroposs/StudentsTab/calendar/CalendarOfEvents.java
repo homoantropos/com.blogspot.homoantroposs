@@ -1,6 +1,6 @@
 package com.blogspot.homoantroposs.StudentsTab.calendar;
 
-import com.blogspot.homoantroposs.StudentsTab.events.Drill;
+import com.blogspot.homoantroposs.StudentsTab.Event.Drill;
 
 import java.util.ArrayList;
 

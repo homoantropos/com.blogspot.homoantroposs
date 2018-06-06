@@ -1,4 +1,4 @@
-package com.blogspot.homoantroposs.StudentsTab.events;
+package com.blogspot.homoantroposs.StudentsTab.Event;
 
 import com.blogspot.homoantroposs.StudentsTab.groups.GroupOfStudents;
 

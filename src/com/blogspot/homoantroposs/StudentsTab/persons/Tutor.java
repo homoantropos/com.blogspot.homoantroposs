@@ -1,6 +1,6 @@
 package com.blogspot.homoantroposs.StudentsTab.persons;
 
-import com.blogspot.homoantroposs.StudentsTab.events.Drill;
+import com.blogspot.homoantroposs.StudentsTab.Event.Drill;
 import com.blogspot.homoantroposs.StudentsTab.groups.GroupOfStudents;
 import com.blogspot.homoantroposs.StudentsTab.calendar.CalendarOfEvents;
 import com.blogspot.homoantroposs.StudentsTab.interfaces.ManagerOfCalendar;

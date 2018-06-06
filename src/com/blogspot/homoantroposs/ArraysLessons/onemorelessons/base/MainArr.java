@@ -60,10 +60,10 @@ public class MainArr {
 //        for (GroupOfUser gou : BaseOfGroups.getBase())
 //            System.out.println(gou.getGroupName());
 //
-//        for (User b : manager.getGroup("хлопці").getUsers())
+//        for (User b : manager.getList("хлопці").getUsers())
 //            System.out.println(b);
 //
-//        for (User g : manager.getGroup("дівчата").getUsers())
+//        for (User g : manager.getList("дівчата").getUsers())
 //            System.out.println(g);
     }
 }

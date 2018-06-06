@@ -3,12 +3,14 @@ package com.blogspot.homoantroposs.StudentsTab.persons;
 import com.blogspot.homoantroposs.StudentsTab.base.BaseManager;
 import com.blogspot.homoantroposs.StudentsTab.groups.GroupOfStudents;
 import com.blogspot.homoantroposs.StudentsTab.utilites.AgeCounter;
+import com.blogspot.homoantroposs.Utilites.DatesPeriodsCounter;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
+import java.util.Calendar;
 
 public class StudentsRegistrator implements Runnable {
 
@@ -159,7 +161,7 @@ public class StudentsRegistrator implements Runnable {
         public void actionPerformed (ActionEvent dayEv){
             day = Integer.parseInt(dayT.getText());
             dOb = LocalDate.of(year, month, day);
-            age = AgeCounter.ageCount(dOb);
+            age = DatesPeriodsCounter.ageCount(dOb);
             sexM.setEnabled(true);
             sexM.requestFocus();
             dayT.setEnabled(false);

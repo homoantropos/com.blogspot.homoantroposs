@@ -1,4 +1,4 @@
-package com.blogspot.homoantroposs.Event;
+package com.blogspot.homoantroposs.StudentsTab.Event;
 
 public enum TypesOfEvents {
 

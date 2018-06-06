@@ -59,7 +59,7 @@ public abstract class User implements Comparable<User>, Serializable {
     }
 
     public String toString () {
-        return String.format("%8s %7s %2d %7s %4d %2d", getFirstName(), getLastName(), getdOb().getDayOfMonth(), getdOb().getMonth(), getdOb().getYear(), getAge());
+        return String.format("%8s %7s %tD %3d", getFirstName(), getLastName(), getdOb(), getAge());
     }
 
     public int compareTo(User u) {
