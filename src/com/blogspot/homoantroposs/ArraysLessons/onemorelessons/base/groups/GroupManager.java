@@ -1,4 +1,4 @@
-package arrLessons.groups;
+package com.blogspot.homoantroposs.ArraysLessons.onemorelessons.base.groups;
 
 import arrLessons.users.User;
 import arrLessons.utilites.ScannerHelper;
@@ -7,14 +7,14 @@ public class GroupManager {
 
     GroupManager () {}
 
-    public static GroupOfUser createTheGroup () {
+    public static arrLessons.groups.GroupOfUser createTheGroup () {
         System.out.println("Назва групи:");
         String nameOfGroup = ScannerHelper.inputStr();
-        GroupOfUser group = new GroupOfUser(nameOfGroup);
+        arrLessons.groups.GroupOfUser group = new arrLessons.groups.GroupOfUser(nameOfGroup);
         return group;
     }
 
-    public static GroupOfUser setUserInGroup (User user, GroupOfUser group) {
+    public static arrLessons.groups.GroupOfUser setUserInGroup (User user, arrLessons.groups.GroupOfUser group) {
         group.getUsers().add(user);
         return group;
     }

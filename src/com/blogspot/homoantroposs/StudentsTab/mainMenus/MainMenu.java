@@ -1,5 +1,6 @@
 package com.blogspot.homoantroposs.StudentsTab.mainMenus;
 
+import com.blogspot.homoantroposs.Utilites.JFrameBasicSets;
 import com.blogspot.homoantroposs.StudentsTab.base.BaseMonitor;
 import com.blogspot.homoantroposs.StudentsTab.groups.GroupOfStudentsCreator;
 import com.blogspot.homoantroposs.StudentsTab.persons.StudentsRegistrator;
@@ -14,6 +15,10 @@ public class MainMenu implements Runnable {
     String nameOfGroup;
     JTextField nameOfGroupT;
     JButton printGroupB;
+    JTextArea monitor;
+    JScrollPane scroll;
+    StringBuilder strB = new StringBuilder();
+    JLabel lab = new JLabel("_  Пересвіт  _");
 
     public void run () {
 
@@ -22,8 +27,6 @@ public class MainMenu implements Runnable {
         JPanel printGroupP = new JPanel();
 
         JLabel nameOfGroupL = new JLabel("Назва групи:");
-
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JButton createNewGroupB = new JButton("Створити групу");
 
@@ -36,6 +39,10 @@ public class MainMenu implements Runnable {
         printGroupB = new JButton("Склад групи");
 
         nameOfGroupT = new JTextField(15);
+
+        monitor = new JTextArea();
+        scroll = new JScrollPane(monitor);
+        scroll.createVerticalScrollBar();
 
         addNewStudentB.addActionListener(new AddNewStudentListener());
         createNewGroupB.addActionListener(new CreateNewStudentListener());
@@ -53,16 +60,11 @@ public class MainMenu implements Runnable {
 
         frame.getContentPane().add(BorderLayout.SOUTH, panel);
         frame.getContentPane().add(BorderLayout.EAST, printBaseB);
+        frame.getContentPane().add(BorderLayout.WEST, lab);
         frame.getContentPane().add(BorderLayout.NORTH, printGroupP);
+        frame.getContentPane().add(BorderLayout.CENTER, scroll);
 
-        Toolkit kit = Toolkit.getDefaultToolkit();
-        Dimension screenSize = kit.getScreenSize();
-        int screenWidth = screenSize.width;
-        int screenHeight = screenSize.height;
-
-        frame.setResizable(true);
-        frame.setSize(screenWidth, screenHeight);
-        frame.setVisible(true);
+        JFrameBasicSets.setSizeFrame(frame);
 
     }
     class CreateNewStudentListener implements ActionListener {
@@ -79,9 +81,11 @@ public class MainMenu implements Runnable {
     }
     class PrintBaseListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            BaseMonitor.printOfBase();
+
+            monitor.setText(BaseMonitor.printOfBaseToString());
         }
     }
+
     class GroupNameListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
            nameOfGroup = nameOfGroupT.getText();
@@ -89,8 +93,8 @@ public class MainMenu implements Runnable {
         }
     }
     class PrintGroupListener implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            BaseMonitor.printOfGroup(nameOfGroup);
+        public void actionPerformed(ActionEvent e){
+            monitor.setText (BaseMonitor.printOfGroupToString(nameOfGroup));
         }
     }
 }

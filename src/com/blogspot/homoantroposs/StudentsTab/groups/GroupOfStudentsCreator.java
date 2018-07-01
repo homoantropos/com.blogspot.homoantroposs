@@ -62,14 +62,6 @@ public class GroupOfStudentsCreator implements Runnable {
             GroupOfStudents group = new GroupOfStudents(nameOfGroup);
             manager.addGroup(group);
             nameOfGroupT.setText("");
-            try {
-                FileOutputStream fos = new FileOutputStream("base.ser");
-                ObjectOutputStream oos = new ObjectOutputStream(fos);
-                oos.writeObject(BaseOfGroups.getBase());
-                oos.close();
-            }catch (IOException e) {
-                System.out.println("Файл не знайдено.");
-            }
         }
     }
 }

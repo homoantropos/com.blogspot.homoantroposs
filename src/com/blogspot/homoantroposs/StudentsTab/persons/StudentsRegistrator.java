@@ -1,7 +1,9 @@
 package com.blogspot.homoantroposs.StudentsTab.persons;
 
+import com.blogspot.homoantroposs.SerializationLesson.Group.GroupCreator;
 import com.blogspot.homoantroposs.StudentsTab.base.BaseManager;
 import com.blogspot.homoantroposs.StudentsTab.groups.GroupOfStudents;
+import com.blogspot.homoantroposs.StudentsTab.groups.GroupOfStudentsCreator;
 import com.blogspot.homoantroposs.StudentsTab.utilites.AgeCounter;
 import com.blogspot.homoantroposs.Utilites.DatesPeriodsCounter;
 
@@ -163,6 +165,7 @@ public class StudentsRegistrator implements Runnable {
             dOb = LocalDate.of(year, month, day);
             age = DatesPeriodsCounter.ageCount(dOb);
             sexM.setEnabled(true);
+            sexF.setEnabled(true);
             sexM.requestFocus();
             dayT.setEnabled(false);
         }
@@ -195,8 +198,8 @@ public class StudentsRegistrator implements Runnable {
         public void actionPerformed (ActionEvent regEv){
             Student student = new Student(firstName, lastName, sex, dOb, age);
             GroupOfStudents group = manager.getGroupOfStudents(nameOfGroup);
-            group.add(student);
-            manager.addGroup(group);
+            group.addStudent(student);
+            manager.changeGroup(group);
             firstNameT.setText("");
             lastNameT.setText("");
             yearT.setText("");
@@ -207,6 +210,7 @@ public class StudentsRegistrator implements Runnable {
             groupSelectionT.setText("");
             firstNameT.setEnabled(true);
             firstNameT.requestFocus();
+
         }
     }
 
