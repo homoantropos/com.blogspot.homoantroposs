@@ -59,6 +59,7 @@ public class GroupOfStudents {
 
     @Override
     public String toString() {
+        
         StringBuilder groupToString = new StringBuilder();
         groupToString.append(String.format("%-11s %-12s \n", "Група:", nameOfGroup));
         groupToString.append(String.format("%-11s %-12s \n", "Зал:", gymAddress));
@@ -67,7 +68,7 @@ public class GroupOfStudents {
             groupToString.append(String.format("%-11s %-10s %-10s \n", "      ", t.getFirstName(), t.getName()));
         groupToString.append(String.format("%-11s %-10s %-10s \n", "Склад:", "Прізвище", "Ім'я"));
         for (Student s : students)
-            groupToString.append(String.format("%11d %-10s %-10s \n", (students.indexOf(s) + 1), "Склад:", "Прізвище", "Ім'я"));
+            groupToString.append(String.format("%11d %-10s %-10s \n", (students.indexOf(s) + 1), s.getFirstName(), s.getName()));
 
         return groupToString.toString();
     }
