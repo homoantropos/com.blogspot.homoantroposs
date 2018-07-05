@@ -13,6 +13,10 @@ public class Student extends User {
     private Payment payment;
     private Amount amount;
 
+    public Student(String firstName, String name, LocalDate dOb, Genders gender, String phoneNumber) {
+        super(firstName, name, dOb, gender, phoneNumber);
+    }
+
     public Attendance getAttendance() {
         return attendance;
     }
@@ -37,7 +41,5 @@ public class Student extends User {
         this.amount = amount;
     }
 
-    public Student(String firstName, String name, LocalDate dOb, Genders sex, String phoneNumber) {
-        super(firstName, name, dOb, sex, phoneNumber);
-    }
+
 }
