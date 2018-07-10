@@ -52,8 +52,12 @@ public class Tutor extends User implements GroupsManager, AttendanceMark, Paymen
     }
 
     public void addStudent (GroupOfStudents group, Student student) {
-        group.getStudents().add(student);
-        Memoryzator.passBaseOfGroupToMemory();
+        if (!group.getStudents().contains(student)) {
+            group.getStudents().add(student);
+            Memoryzator.passBaseOfGroupToMemory();
+        } else {
+            System.out.println("Цей Учень вже є в цій групі");
+        }
     }
 
     public void removeStudent (GroupOfStudents group, Student student) {

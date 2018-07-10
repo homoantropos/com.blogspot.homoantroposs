@@ -54,14 +54,13 @@ public class GroupOfStudents implements Serializable {
         if (!(o instanceof GroupOfStudents)) return false;
         GroupOfStudents that = (GroupOfStudents) o;
         return Objects.equals(getNameOfGroup(), that.getNameOfGroup()) &&
-                Objects.equals(getGymAddress(), that.getGymAddress()) &&
-                Objects.equals(getStudents(), that.getStudents());
+                Objects.equals(getGymAddress(), that.getGymAddress());
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(getNameOfGroup(), getGymAddress(), getStudents());
+        return Objects.hash(getNameOfGroup(), getGymAddress());
     }
 
     @Override
