@@ -6,28 +6,18 @@ import com.blogspot.homoantroposs.GymConsumersManager.Users.Tutor;
 
 public interface GroupsManager {
 
-    static public void changeNameOfGroup (GroupOfStudents group, String nameOfGroup) {
-        group.setNameOfGroup(nameOfGroup);
-    }
+    public GroupOfStudents creatTheGroup (String nameOfGroup, String gymAddress);
 
-    static public void changeAdressOfGym (GroupOfStudents group, String gymAdress) {
-        group.setGymAddress(gymAdress);
-    }
+    public void changeNameOfGroup (GroupOfStudents group, String nameOfGroup);
 
-    static public void addStudent (GroupOfStudents group, Student student) {
-        group.getStudents().add(student);
-    }
+    public void changeAdressOfGym (GroupOfStudents group, String gymAdress);
 
-    static public void removeStudent (GroupOfStudents group, Student student) {
-        group.getStudents().remove(student);
-    }
+    public void addStudent (GroupOfStudents group, Student student);
 
-    static public void addTutor (GroupOfStudents group, Tutor tutor) {
-        group.getTutors().add(tutor);
-    }
+    public void removeStudent (GroupOfStudents group, Student student);
 
-    static public void removeTutor (GroupOfStudents group, Tutor tutor) {
-        group.getTutors().remove(tutor);
-    }
+    public void addTutor (GroupOfStudents group, Tutor tutor);
+
+    public void removeTutor (GroupOfStudents group, Tutor tutor);
 
 }

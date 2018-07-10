@@ -27,6 +27,8 @@ public abstract class User implements Serializable, Comparable <User> {
         this.phoneNumber = phoneNumber;
     }
 
+    public User () {}
+
     public String getFirstName() {
         return firstName;
     }
@@ -58,6 +60,10 @@ public abstract class User implements Serializable, Comparable <User> {
 
     public Genders getGender() {
         return gender;
+    }
+
+    public void setGender (Genders gender) {
+        this.gender = gender;
     }
 
     public String getMail() {
@@ -94,33 +100,6 @@ public abstract class User implements Serializable, Comparable <User> {
 
     public int compareTo (User u) {
         return this.firstName.compareTo(u.firstName);
-    }
-
-    public String printFullInfo () {
-        StringBuilder userTostring = new StringBuilder();
-        userTostring.append(String.format("%17s %-30s\n", "Учень:", toString()));
-        userTostring.append(String.format("%17s %2$td.%2$tm.%2$ty\n", "дата народження:", dOb));
-        userTostring.append(String.format("%17s %2$-3d %3$6s %4$1s\n", "вік:", getAge(), "стать:", getGender().getSex()));
-        userTostring.append(String.format("%17s %-15s\n", "електронна пошта:", mail));
-        userTostring.append(String.format("%17s %-15s\n", "адреса:", address));
-        userTostring.append(String.format("%17s %-17s\n", "телефон 1:", phoneNumber));
-        userTostring.append(String.format("%17s %-17s\n", "телефон 2:", extraPhoneNumber));
-
-        return userTostring.toString();
-    }
-
-    public String printFullInfoToRaw () {
-        StringBuilder userTostring = new StringBuilder();
-        userTostring.append(String.format("|%30s | ", toString()));
-        userTostring.append(String.format("%-17s | ", phoneNumber));
-        userTostring.append(String.format("%-17s |", extraPhoneNumber));
-        userTostring.append(String.format("%1$td.%1$tm.%1$ty | ", dOb));
-        userTostring.append(String.format("%-3d | %2$1s | ", getAge(), getGender().getSex()));
-        userTostring.append(String.format("%-15s | ", mail));
-        userTostring.append(String.format("%-50s | ", address));
-
-
-        return userTostring.toString();
     }
 
     @Override

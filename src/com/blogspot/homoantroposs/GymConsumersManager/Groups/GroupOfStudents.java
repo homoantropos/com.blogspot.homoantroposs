@@ -14,12 +14,12 @@ public class GroupOfStudents implements Serializable {
     private ArrayList<Tutor> tutors;
     private ArrayList<Student> students;
 
-    public GroupOfStudents(String nameOfGroup, String gymAddress) {
+    public GroupOfStudents(String nameOfGroup, String gymAddress, Tutor mainTutor) {
         this.nameOfGroup = nameOfGroup;
         this.gymAddress = gymAddress;
-
         tutors = new ArrayList<>();
         students = new ArrayList<>();
+        tutors.add(mainTutor);
     }
 
     private GroupOfStudents () {}
@@ -54,21 +54,21 @@ public class GroupOfStudents implements Serializable {
         if (!(o instanceof GroupOfStudents)) return false;
         GroupOfStudents that = (GroupOfStudents) o;
         return Objects.equals(getNameOfGroup(), that.getNameOfGroup()) &&
-                Objects.equals(getTutors(), that.getTutors()) &&
+                Objects.equals(getGymAddress(), that.getGymAddress()) &&
                 Objects.equals(getStudents(), that.getStudents());
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(getNameOfGroup(), getTutors(), getStudents());
+        return Objects.hash(getNameOfGroup(), getGymAddress(), getStudents());
     }
 
     @Override
     public String toString() {
 
         StringBuilder groupToString = new StringBuilder();
-        groupToString.append(String.format("%-11s %-12s \n\n", "Група:", nameOfGroup));
+        groupToString.append(String.format("\n%-11s %-12s \n\n", "Група:", nameOfGroup));
         groupToString.append(String.format("%-11s %-30s \n\n", "Зал:", gymAddress));
         groupToString.append(String.format("%-11s \n", "Наставники:"));
         Integer count1 = 1;

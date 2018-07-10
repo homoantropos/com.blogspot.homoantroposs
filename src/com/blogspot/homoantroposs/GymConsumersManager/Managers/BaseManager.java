@@ -1,15 +1,16 @@
 package com.blogspot.homoantroposs.GymConsumersManager.Managers;
 
 import com.blogspot.homoantroposs.GymConsumersManager.BaseOfGroups.BaseOfGroups;
+import com.blogspot.homoantroposs.GymConsumersManager.Facilities.Memoryzator;
 import com.blogspot.homoantroposs.GymConsumersManager.Groups.GroupOfStudents;
+
+import java.util.ArrayList;
 
 public interface BaseManager {
 
-    public static void addGroup (GroupOfStudents group) {
-        BaseOfGroups.getBaseOfGroups().add(group);
-    }
+    public ArrayList<GroupOfStudents> getBaseOfGroups ();
 
-    public static void deleteGroup (GroupOfStudents group) {
-        BaseOfGroups.getBaseOfGroups().remove(group);
-    }
+    public void addGroup (GroupOfStudents group);
+
+    public void removeGroup(GroupOfStudents group);
 }
