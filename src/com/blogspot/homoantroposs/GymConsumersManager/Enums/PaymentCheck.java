@@ -1,6 +1,8 @@
 package com.blogspot.homoantroposs.GymConsumersManager.Enums;
 
-public enum PaymentCheck {
+import java.io.Serializable;
+
+public enum PaymentCheck implements Serializable {
     PAID ('+'),
     OWING ('-');
 

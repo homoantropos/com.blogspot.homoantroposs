@@ -1,6 +1,8 @@
 package com.blogspot.homoantroposs.GymConsumersManager.Enums;
 
-public enum Amount {
+import java.io.Serializable;
+
+public enum Amount implements Serializable {
 
     PERSONAL (0),
     MAXIMUM (0),

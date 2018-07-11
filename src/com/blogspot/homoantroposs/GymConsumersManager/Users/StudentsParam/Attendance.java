@@ -2,9 +2,10 @@ package com.blogspot.homoantroposs.GymConsumersManager.Users.StudentsParam;
 
 import com.blogspot.homoantroposs.GymConsumersManager.Enums.AttendanceCheck;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Attendance {
+public class Attendance implements Serializable {
 
     private AttendanceCheck attendanceCheck;
     private LocalDate dateOfDrill;

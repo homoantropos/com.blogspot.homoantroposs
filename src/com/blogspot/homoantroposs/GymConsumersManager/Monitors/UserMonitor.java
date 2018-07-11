@@ -1,8 +1,5 @@
-package com.blogspot.homoantroposs.GymConsumersManager.Facilities.Monitors;
+package com.blogspot.homoantroposs.GymConsumersManager.Monitors;
 
-import com.blogspot.homoantroposs.GymConsumersManager.BaseOfGroups.BaseOfGroups;
-import com.blogspot.homoantroposs.GymConsumersManager.Groups.GroupOfStudents;
-import com.blogspot.homoantroposs.GymConsumersManager.Users.Student;
 import com.blogspot.homoantroposs.GymConsumersManager.Users.User;
 
 public class UserMonitor {

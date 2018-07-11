@@ -1,6 +1,8 @@
 package com.blogspot.homoantroposs.GymConsumersManager.Enums;
 
-public enum AttendanceCheck {
+import java.io.Serializable;
+
+public enum AttendanceCheck implements Serializable {
     PRESENT ('+'),
     ABSENT ('н');
 

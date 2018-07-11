@@ -1,6 +1,8 @@
 package com.blogspot.homoantroposs.GymConsumersManager.Enums;
 
-public enum Genders {
+import java.io.Serializable;
+
+public enum Genders implements Serializable {
 
     MAIL ('ч'),
     FEMAIL ('ж');
