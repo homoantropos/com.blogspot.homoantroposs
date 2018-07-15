@@ -12,7 +12,7 @@ public class Memoryzator {
 
     public static void passBaseOfGroupToMemory () {
         try {
-            FileOutputStream fis = new FileOutputStream ("E:\\Google Диск\\com.blogspot.homoantroposs\\baseOfGroups.ser");
+            FileOutputStream fis = new FileOutputStream ("baseOfGroups.ser");
             ObjectOutputStream oos = new ObjectOutputStream (fis);
             oos.writeObject(BaseOfGroups.getBaseOfGroups());
             oos.close();

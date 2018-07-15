@@ -2,11 +2,15 @@ package com.blogspot.homoantroposs.GymConsumersManager;
 
 
 import com.blogspot.homoantroposs.GymConsumersManager.BaseOfGroups.BaseOfGroups;
-import com.blogspot.homoantroposs.GymConsumersManager.Enums.Months;
-import com.blogspot.homoantroposs.GymConsumersManager.Monitors.AttendanceMonitor;
-import com.blogspot.homoantroposs.GymConsumersManager.Monitors.BaseOfGroupsMonitor;
+import com.blogspot.homoantroposs.GymConsumersManager.Enums.AttendanceCheck;
+import com.blogspot.homoantroposs.GymConsumersManager.Enums.Genders;
+import com.blogspot.homoantroposs.GymConsumersManager.GUI.ListOfGroups;
+import com.blogspot.homoantroposs.GymConsumersManager.GUI.TextAreaInfo;
 import com.blogspot.homoantroposs.GymConsumersManager.Groups.GroupOfStudents;
-import com.blogspot.homoantroposs.GymConsumersManager.Monitors.DatesMonitor;
+import com.blogspot.homoantroposs.GymConsumersManager.Monitors.AttendanceOfGroupMonitor;
+import com.blogspot.homoantroposs.GymConsumersManager.Monitors.AttendanceOfStudentMonitor;
+import com.blogspot.homoantroposs.GymConsumersManager.Monitors.BaseOfGroupsMonitor;
+import com.blogspot.homoantroposs.GymConsumersManager.Users.Admin;
 import com.blogspot.homoantroposs.GymConsumersManager.Users.Student;
 import com.blogspot.homoantroposs.GymConsumersManager.Users.Tutor;
 
@@ -15,27 +19,48 @@ import java.time.LocalDate;
 public class MainGCM extends BaseOfGroups {
 
     public static void main(String[] args) {
-        LocalDate date = LocalDate.of(1971, 06, 8);
-        System.out.println(DatesMonitor.showMonthName(date));
 
-//        Tutor antropov = BaseOfGroups.getBaseOfGroups().get(0).getTutors().get(0);
-//        GroupOfStudents groupOfStudents = BaseOfGroups.getBaseOfGroups().get(0);
+        ListOfGroups uLab = new ListOfGroups(3);
+//
+//        new TextAreaInfo (BaseOfGroupsMonitor.showOnlyNamesAllGroups(), "");
+//        new TextAreaInfo (BaseOfGroupsMonitor.showAllGroups(), "");
+
+//
+        Tutor antropov = BaseOfGroups.getBaseOfGroups().get(0).getTutors().get(0);
+        Tutor dolishnii = BaseOfGroups.getBaseOfGroups().get(1).getTutors().get(0);
+        Admin admin = new Admin (antropov);
+
+        GroupOfStudents groupOfStudents = BaseOfGroups.getBaseOfGroups().get(0);
         Student student = BaseOfGroups.getBaseOfGroups().get(0).getStudents().get(1);
         Student student1 = BaseOfGroups.getBaseOfGroups().get(0).getStudents().get(0);
 
+        // початок перевірки як працює контроль доступу до груп та наявність в групі студентів - наставників
+
+//        antropov.addStudent(BaseOfGroups.getBaseOfGroups().get(1), student);
+//        dolishnii.addStudent(BaseOfGroups.getBaseOfGroups().get(1), student);
+//        admin.addStudent(BaseOfGroups.getBaseOfGroups().get(1), student);
+//
+//        antropov.addStudent(BaseOfGroups.getBaseOfGroups().get(0), student1);
+//        dolishnii.addStudent(BaseOfGroups.getBaseOfGroups().get(0), student1);
+//        admin.addStudent(BaseOfGroups.getBaseOfGroups().get(0), student1);
+
+        // завершення перевірки наявності
+
+        //        ВІДВІДУВАНІСТЬ - початок перевірки роботи
+
 //        antropov.checkAttendance(groupOfStudents, student, AttendanceCheck.ABSENT);
 //        antropov.checkAttendance(groupOfStudents, student1, AttendanceCheck.PRESENT);
-
-        System.out.println(AttendanceMonitor.showStudentAttendanceAll(student));
-        System.out.println(AttendanceMonitor.showStudentAttendanceAll(student1));
+//
+        System.out.println(AttendanceOfGroupMonitor.showGroupAttendanceMonthly(BaseOfGroups.getBaseOfGroups().get(0), 7));
+        System.out.println(AttendanceOfStudentMonitor.showStudentAttendanceAll(student1));
 //
 //        System.out.println("");
 //        System.out.println("");
 //        System.out.println("");
-//
-        System.out.println(BaseOfGroupsMonitor.showOnlyNamesAllGroups());
-        System.out.println(BaseOfGroupsMonitor.showAllGroups());
 
+        //        ВІДВІДУВАНІСТЬ - завершення перевірки
+
+        //        СТВОРЕННЯ БАЗИ ТА НАПОВНЕННЯ УЧНЯМИ
 
 //        Tutor antropov = new Tutor("Антропов", "Сергій", LocalDate.of(1971, 06, 8), Genders.MAIL, "+36 050 6577 67 41");
 //        antropov.creatTheGroup("Новачки", "м. Київ, вул. Древлянська, б. 8");
@@ -63,12 +88,12 @@ public class MainGCM extends BaseOfGroups {
 //        antropov.addStudent(BaseOfGroups.getBaseOfGroups().get(0), galych);
 //        antropov.addStudent(BaseOfGroups.getBaseOfGroups().get(0), barylo);
 //        antropov.addStudent(BaseOfGroups.getBaseOfGroups().get(0), ivanochko);
-//        antropov.addStudent(BaseOfGroups.getBaseOfGroups().get(1), banadyga);
+//        dolishnii.addStudent(BaseOfGroups.getBaseOfGroups().get(1), banadyga);
 //        antropov.addStudent(BaseOfGroups.getBaseOfGroups().get(0), lavriv);
 //        antropov.addStudent(BaseOfGroups.getBaseOfGroups().get(0), skrypnyk);
 //        antropov.addStudent(BaseOfGroups.getBaseOfGroups().get(0), fedenchuk);
-//        antropov.addStudent(BaseOfGroups.getBaseOfGroups().get(1), gorbatiuk);
-//        antropov.addStudent(BaseOfGroups.getBaseOfGroups().get(1), ulishak);
+//        dolishnii.addStudent(BaseOfGroups.getBaseOfGroups().get(1), gorbatiuk);
+//        dolishnii.addStudent(BaseOfGroups.getBaseOfGroups().get(1), ulishak);
 
     }
 }

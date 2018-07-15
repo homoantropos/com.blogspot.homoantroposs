@@ -17,7 +17,7 @@ public class BaseOfGroupsMonitor {
     public static String showOnlyNamesAllGroups() {
         StringBuilder allBase = new StringBuilder();
         for (GroupOfStudents gos : BaseOfGroups.getBaseOfGroups())
-            allBase.append(String.format("| %3d. | %-40s | %-20s | наставник: %-17s |", (BaseOfGroups.getBaseOfGroups().indexOf(gos) + 1), gos.getGymAddress(), gos.getNameOfGroup(), gos.getTutors().get(0)) + '\n');
+            allBase.append(String.format("| %3d. | %-40s | %-20s | наставник: %-20s |", (BaseOfGroups.getBaseOfGroups().indexOf(gos) + 1), gos.getGymAddress(), gos.getNameOfGroup(), gos.getTutors().get(0)) + '\n');
     return allBase.toString();
     }
 }

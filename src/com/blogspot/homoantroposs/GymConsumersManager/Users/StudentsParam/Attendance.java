@@ -4,6 +4,7 @@ import com.blogspot.homoantroposs.GymConsumersManager.Enums.AttendanceCheck;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Attendance implements Serializable {
 
@@ -37,4 +38,20 @@ public class Attendance implements Serializable {
         return gym;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Attendance)) return false;
+        Attendance that = (Attendance) o;
+        return  Objects.equals(getDateOfDrill(), that.getDateOfDrill()) &&
+                Objects.equals(getNameOfGroup(), that.getNameOfGroup()) &&
+                Objects.equals(getNameOfTutor(), that.getNameOfTutor()) &&
+                Objects.equals(getGym(), that.getGym());
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(getAttendanceCheck(), getDateOfDrill(), getNameOfGroup(), getNameOfTutor(), getGym());
+    }
 }

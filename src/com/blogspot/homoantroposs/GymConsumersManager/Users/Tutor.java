@@ -7,10 +7,14 @@ import com.blogspot.homoantroposs.GymConsumersManager.Enums.PaymentCheck;
 import com.blogspot.homoantroposs.GymConsumersManager.Facilities.Memoryzator;
 import com.blogspot.homoantroposs.GymConsumersManager.Groups.GroupOfStudents;
 import com.blogspot.homoantroposs.GymConsumersManager.Managers.*;
+import com.blogspot.homoantroposs.GymConsumersManager.Monitors.DatesMonitor;
 import com.blogspot.homoantroposs.GymConsumersManager.Users.StudentsParam.Attendance;
 import com.blogspot.homoantroposs.GymConsumersManager.Users.StudentsParam.Payment;
 
+import java.lang.reflect.Array;
 import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.Collections;
 
 public class Tutor extends User implements GroupsManager, AttendanceMark, PaymentMark, AmountSet {
 
@@ -42,47 +46,97 @@ public class Tutor extends User implements GroupsManager, AttendanceMark, Paymen
     }
 
     public void changeNameOfGroup (GroupOfStudents group, String nameOfGroup) {
-        group.setNameOfGroup(nameOfGroup);
-        Memoryzator.passBaseOfGroupToMemory();
+        if (group.getTutors().contains(this)) {
+            group.setNameOfGroup(nameOfGroup);
+            Memoryzator.passBaseOfGroupToMemory();
+        } else {
+            System.out.println("Ви не можете редагувати цю групу, зверніться до адміністратора.");
+        }
     }
 
     public void changeAdressOfGym (GroupOfStudents group, String gymAdress) {
-        group.setGymAddress(gymAdress);
-        Memoryzator.passBaseOfGroupToMemory();
+        if (group.getTutors().contains(this)) {
+            group.setGymAddress(gymAdress);
+            Memoryzator.passBaseOfGroupToMemory();
+        } else {System.out.println("Ви не можете редагувати цю групу, зверніться до адміністратора.");
+        }
     }
 
     public void addStudent (GroupOfStudents group, Student student) {
-        if (!group.getStudents().contains(student)) {
-            group.getStudents().add(student);
-            Memoryzator.passBaseOfGroupToMemory();
-        } else {
-            System.out.println("Цей Учень вже є в цій групі");
+        if (group.getTutors().contains(this)) {
+            if (!group.getStudents().contains(student)) {
+                group.getStudents().add(student);
+                Collections.sort(group.getStudents());
+                Memoryzator.passBaseOfGroupToMemory();
+            } else {
+                System.out.println("Цей Учень вже є в цій групі");
+            }
+        }
+        else {
+            System.out.println("Ви не можете редагувати цю групу, зверніться до адміністратора.");
         }
     }
 
     public void removeStudent (GroupOfStudents group, Student student) {
-        group.getStudents().remove(student);
-        Memoryzator.passBaseOfGroupToMemory();
+        if (group.getTutors().contains(this)) {
+            group.getStudents().remove(student);
+            Collections.sort(group.getStudents());
+            Memoryzator.passBaseOfGroupToMemory();
+        }
+        else {
+            System.out.println("Ви не можете редагувати цю групу, зверніться до адміністратора.");
+        }
     }
 
     public void addTutor (GroupOfStudents group, Tutor tutor) {
-
+        if (group.getTutors().contains(this)) {
+            if(!group.getTutors().contains(tutor)){
+                group.getTutors().add(tutor);
+                Memoryzator.passBaseOfGroupToMemory();
+            } else {
+                System.out.println("Цей Наставник вже є в групі");
+            }
+        } else {
+            System.out.println("Ви не можете редагувати цю групу, зверніться до адміністратора.");
+        }
     }
 
     public void removeTutor (GroupOfStudents group, Tutor tutor) {
-
+        if (group.getTutors().contains(this)) {
+            if(group.getTutors().contains(tutor)){
+                group.getTutors().remove(tutor);
+                Memoryzator.passBaseOfGroupToMemory();
+            } else {
+                System.out.println("Наставника не знайдено");
+            }
+        } else {
+            System.out.println("Ви не можете редагувати цю групу, зверніться до адміністратора.");
+        }
     }
 
     public void checkAttendance (GroupOfStudents group, Student student, AttendanceCheck attendanceCheck) {
-        Attendance attendance = new Attendance(attendanceCheck, group.getNameOfGroup(), this.toString(), group.getGymAddress());
-        student.getAttendance().add(attendance);
-        Memoryzator.passBaseOfGroupToMemory();
+        if (group.getTutors().contains(this)) {
+            Attendance attendance = new Attendance(attendanceCheck, group.getNameOfGroup(), this.toString(), group.getGymAddress());
+            if (!student.getAttendance().contains(attendance)) {
+                student.getAttendance().add(attendance);
+                Memoryzator.passBaseOfGroupToMemory();
+            }
+        }else {
+            System.out.println("Ви не можете редагувати цю групу, зверніться до адміністратора.");
+        }
     }
 
-    public void checkPayment (Student student, PaymentCheck paymentCheck, LocalDate month) {
-        Payment payment = new Payment (paymentCheck, month);
-        student.getPayment().add(payment);
-        Memoryzator.passBaseOfGroupToMemory();
+    public void checkPayment (GroupOfStudents group, Student student, PaymentCheck paymentCheck, DatesMonitor month, Integer amount) {
+        if (group.getTutors().contains(this)) {
+            Payment payment = new Payment(paymentCheck, month, amount);
+            for (Payment p : student.getPayment())
+                if (p.getMonth().equals(month)) {
+                amount = amount + p.getAmout();
+                payment = new Payment(paymentCheck, month, amount);
+                }
+            student.getPayment().add(payment);
+            Memoryzator.passBaseOfGroupToMemory();
+        }else {System.out.println("Ви не можете редагувати цю групу, зверніться до адміністратора.");}
     }
 
 }

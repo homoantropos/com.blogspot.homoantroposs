@@ -18,6 +18,7 @@ public abstract class User implements Serializable, Comparable <User> {
     private String phoneNumber;
     private String extraPhoneNumber;
     private String address;
+    private LocalDate dateOfReestration;
 
     public User(String firstName, String name, LocalDate dOb, Genders gender, String phoneNumber) {
         this.firstName = firstName;
@@ -25,6 +26,8 @@ public abstract class User implements Serializable, Comparable <User> {
         this.dOb = dOb;
         this.gender = gender;
         this.phoneNumber = phoneNumber;
+        dateOfReestration = LocalDate.now();
+
     }
 
     public User () {}
@@ -98,8 +101,12 @@ public abstract class User implements Serializable, Comparable <User> {
         this.address = address;
     }
 
+    public LocalDate getDateOfReestration() {
+        return dateOfReestration;
+    }
+
     public int compareTo (User u) {
-        return this.firstName.compareTo(u.firstName);
+        return this.toString().compareTo(u.toString());
     }
 
     @Override
