@@ -2,6 +2,7 @@ package com.blogspot.homoantroposs.GymConsumersManager.Groups;
 
 import com.blogspot.homoantroposs.GymConsumersManager.Users.Student;
 import com.blogspot.homoantroposs.GymConsumersManager.Users.Tutor;
+import com.blogspot.homoantroposs.GymConsumersManager.Users.User;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ public class GroupOfStudents implements Serializable {
     private String nameOfGroup;
     private String gymAddress;
     private ArrayList<Tutor> tutors;
-    private ArrayList<Student> students;
+    private ArrayList<User> students;
 
     public GroupOfStudents(String nameOfGroup, String gymAddress, Tutor mainTutor) {
         this.nameOfGroup = nameOfGroup;
@@ -44,7 +45,7 @@ public class GroupOfStudents implements Serializable {
         return tutors;
     }
 
-    public ArrayList<Student> getStudents() {
+    public ArrayList<User> getStudents() {
         return students;
     }
 
@@ -59,7 +60,6 @@ public class GroupOfStudents implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(getNameOfGroup(), getGymAddress());
     }
 
@@ -77,7 +77,7 @@ public class GroupOfStudents implements Serializable {
         }
         groupToString.append(String.format("\n%-11s %-30s\n", "Склад:", "Прізвище" + " " + "ім'я"));
         Integer count2 = 1;
-        for (Student s : students) {
+        for (User s : students) {
             groupToString.append(String.format("%11d %-30s\n", count2, s.toString()));
             count2++;
         }

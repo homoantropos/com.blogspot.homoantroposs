@@ -79,7 +79,7 @@ class A {
 
 class B extends A {
     public B () {
-        System.out.print("B");
+        System.out.print("BotherPackage");
         a();
         }
         public void a() {

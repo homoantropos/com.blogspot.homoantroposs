@@ -37,4 +37,5 @@ public class GroupOfStudents implements Serializable {
     public void addStudent (Student student) {
         students.add(student);
     }
+
 }

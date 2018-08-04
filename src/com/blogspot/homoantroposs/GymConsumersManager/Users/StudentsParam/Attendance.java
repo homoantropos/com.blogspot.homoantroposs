@@ -45,13 +45,12 @@ public class Attendance implements Serializable {
         Attendance that = (Attendance) o;
         return  Objects.equals(getDateOfDrill(), that.getDateOfDrill()) &&
                 Objects.equals(getNameOfGroup(), that.getNameOfGroup()) &&
-                Objects.equals(getNameOfTutor(), that.getNameOfTutor()) &&
                 Objects.equals(getGym(), that.getGym());
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(getAttendanceCheck(), getDateOfDrill(), getNameOfGroup(), getNameOfTutor(), getGym());
+        return Objects.hash(getAttendanceCheck(), getDateOfDrill(), getNameOfGroup(), getGym());
     }
 }

@@ -17,5 +17,4 @@ public class JFrameBasicSets extends JFrame {
         frame.setSize(scrWidth, scrHeight);
         frame.setVisible(true);
     }
-
 }

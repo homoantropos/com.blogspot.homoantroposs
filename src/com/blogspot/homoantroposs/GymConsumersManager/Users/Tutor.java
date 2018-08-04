@@ -16,7 +16,7 @@ import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Collections;
 
-public class Tutor extends User implements GroupsManager, AttendanceMark, PaymentMark, AmountSet {
+public class Tutor extends Student implements GroupsManager, AttendanceMark, PaymentMark, AmountSet {
 
     public Tutor(String firstName, String name, LocalDate dOb, Genders sex, String phoneNumber) {
         super(firstName, name, dOb, sex, phoneNumber);
@@ -62,10 +62,10 @@ public class Tutor extends User implements GroupsManager, AttendanceMark, Paymen
         }
     }
 
-    public void addStudent (GroupOfStudents group, Student student) {
+    public <T> void addStudent (GroupOfStudents group, T student) {
         if (group.getTutors().contains(this)) {
             if (!group.getStudents().contains(student)) {
-                group.getStudents().add(student);
+                group.getStudents().add((User)student);
                 Collections.sort(group.getStudents());
                 Memoryzator.passBaseOfGroupToMemory();
             } else {
@@ -77,7 +77,7 @@ public class Tutor extends User implements GroupsManager, AttendanceMark, Paymen
         }
     }
 
-    public void removeStudent (GroupOfStudents group, Student student) {
+    public <T> void removeStudent (GroupOfStudents group, T student) {
         if (group.getTutors().contains(this)) {
             group.getStudents().remove(student);
             Collections.sort(group.getStudents());

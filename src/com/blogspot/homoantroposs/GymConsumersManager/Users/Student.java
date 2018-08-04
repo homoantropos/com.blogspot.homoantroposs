@@ -21,6 +21,8 @@ public class Student extends User {
         paymentChecks = new ArrayList<>();
     }
 
+    public Student () {}
+
     public ArrayList<Attendance> getAttendance() {
         return attendances;
     }

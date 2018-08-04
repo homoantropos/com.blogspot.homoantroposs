@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class ScannerHelper {
 
-    ScannerHelper () {}
+    private ScannerHelper () {}
 
     public static String askStr() {
         Scanner inPut = new Scanner (System.in);

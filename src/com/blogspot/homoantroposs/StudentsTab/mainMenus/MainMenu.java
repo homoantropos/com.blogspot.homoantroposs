@@ -18,7 +18,6 @@ public class MainMenu implements Runnable {
     JTextArea monitor;
     JScrollPane scroll;
     StringBuilder strB = new StringBuilder();
-    JLabel lab = new JLabel("_  Пересвіт  _");
 
     public void run () {
 
@@ -34,7 +33,7 @@ public class MainMenu implements Runnable {
 
         JButton addNewStudentB = new JButton("Додати учня");
 
-        JButton printBaseB = new JButton("Всі групи");
+        JButton printBaseB = new JButton("Надрукувати групи");
 
         printGroupB = new JButton("Склад групи");
 
@@ -57,10 +56,9 @@ public class MainMenu implements Runnable {
         printGroupP.add(nameOfGroupL);
         printGroupP.add(nameOfGroupT);
         printGroupP.add(printGroupB);
+        printGroupP.add(printBaseB);
 
         frame.getContentPane().add(BorderLayout.SOUTH, panel);
-        frame.getContentPane().add(BorderLayout.EAST, printBaseB);
-        frame.getContentPane().add(BorderLayout.WEST, lab);
         frame.getContentPane().add(BorderLayout.NORTH, printGroupP);
         frame.getContentPane().add(BorderLayout.CENTER, scroll);
 

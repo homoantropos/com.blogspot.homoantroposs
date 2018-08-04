@@ -12,9 +12,9 @@ public interface GroupsManager {
 
     public void changeAdressOfGym (GroupOfStudents group, String gymAdress);
 
-    public void addStudent (GroupOfStudents group, Student student);
+    public <T> void addStudent (GroupOfStudents group, T student);
 
-    public void removeStudent (GroupOfStudents group, Student student);
+    public <T> void removeStudent (GroupOfStudents group, T student);
 
     public void addTutor (GroupOfStudents group, Tutor tutor);
 
